@@ -1,0 +1,10 @@
+version: '3'
+services:
+    image: mchangrh/sb-mirror:latest
+    # if you want to mirror the repository
+    ports:
+      - "873:873"
+    environment:
+      - MIRROR=TRUE
+      # override to set upstream mirror, defaults to sponsor.ajay.app
+      #- MIRROR_URL=sb.mirror.example.com
