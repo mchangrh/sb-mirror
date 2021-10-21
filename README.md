@@ -8,7 +8,7 @@ Docker container to mirror the SponsorBlock database over rsync
 ## Just download the database to ./sb-mirror
 ```sh
 docker pull mchangrh/sb-mirror:latest
-docker run --rm -it -v ./sb-mirror:/mirror sb-mirror:latest
+docker run --rm -it -v ./sb-mirror:/mirror mchangrh/sb-mirror:latest
 ```
 
 ### Environment Variables
