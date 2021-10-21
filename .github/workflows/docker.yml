@@ -13,7 +13,7 @@ jobs:
       - name: Prepare parameters
         id: prep
         run: |
-          DOCKER_IMAGE=nilesbot/niles
+          DOCKER_IMAGE=mchangrh/sb-mirror
           VERSION=latest
           # If this is git tag, use the tag name as a docker tag
           if [[ $GITHUB_REF == refs/tags/* ]]; then
