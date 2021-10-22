@@ -4,4 +4,4 @@ URL=${MIRROR_URL:-"sponsor.ajay.app"} # download from main mirror if none specif
 rsync -rztvP --append rsync://$URL/sponsorblock /mirror
 
 if [[ $SQLITE ]]; # if sqlite, merge all csvs into one .db file
-sh convert-sqlite.sh
+sh /convert-sqlite.sh
