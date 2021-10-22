@@ -12,5 +12,5 @@ services:
       # override to set upstream mirror, defaults to sponsor.ajay.app
       #- MIRROR_URL=sb.mirror.example.com
     volumes:
-      - ./mirror:/mirror
-      - ./export:/export
+      - mirror:/mirror
+      - export:/export
