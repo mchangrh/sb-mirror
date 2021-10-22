@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+    postgres:
+        ports:
+            - '5432:5432'
+        environment:
+            - POSTGRES_USER=mirror_db_user
+            - POSTGRES_PASSWORD=mirror_db_pass
+        volumes:
+            - ./mirror:/mirror
+        image: postgres:alpine
