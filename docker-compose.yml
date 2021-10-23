@@ -16,14 +16,17 @@ services:
     ports:
       - "873:873"
     environment:
-      - MIRROR=TRUE
+      # - MIRROR=TRUE # enable cronjob
+      # - MIRROR_URL=qc.mchang.xyz # override to set upstream mirror, defaults to sponsor.ajay.app
+      # - SQLITE=FALSE # generate .db in /export
     volumes:
       - "${PWD}/mirror:/mirror"
+      - "${PWD}/export:/export"
   sb-server:
     ports: "8080:8080"
     environment:
       volumes:
-        - "${PWD}/database:/app/database"
+        - "${PWD}/export/SponsorTimesDB.db:/app/database/SponsorTimesDB.db"
         - "${PWD}/config.json:/app/config.json"
     image: mchangrh/sb-server-runner:latest
     build: ./sb-server-runner

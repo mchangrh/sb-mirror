@@ -1,8 +1,10 @@
 #!/bin/sh
 
-git clone https://github.com/ajayyy/SponsorBlockServer.git /app
+git clone https://github.com/ajayyy/SponsorBlockServer.git --depth 1 /app
+npm ci
+
 if [[ $DBINIT ]]
-do
-  echo {"mode": "init-db-only"} > /app/config.json
+then
+  echo '{"mode": "init-db-and-exit"}' > /app/config.json
 fi
 npm start
