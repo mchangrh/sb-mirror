@@ -1,0 +1,23 @@
+name: docker-ci
+
+on:
+  push:
+    branches:
+      - main
+  release:
+    types: [created]
+
+jobs:
+  make-base-db:
+    runs-on: ubuntu-latest
+    steps:
+      # Initialization
+      - uses: actions/checkout@v2
+      - name: Start docker container
+        run: docker run -e DBINIT=true -v "${PWD}/export:export" mchangrh:sb-server-runner  
+
+      # Create base db artifact
+      - uses: actions/upload-artifact@v2
+        with:
+          name: SponsorTimesDB.db
+          path: export
