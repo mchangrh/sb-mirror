@@ -1,4 +1,4 @@
-name: docker-ci
+name: create-sqlite-base
 
 on:
   push:
