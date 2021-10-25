@@ -61,14 +61,14 @@ jobs:
       - name: Build sb-mirror
         uses: docker/build-push-action@v2
         with:
-          context: ./sb-mirror
-          file: ./sb-mirror/Dockerfile
+          context: ./build/sb-mirror
+          file: ./build/sb-mirror/Dockerfile
           push: true
           tags: ${{ steps.prep-mirror.outputs.tags }}
       - name: Build sb-server-runner
         uses: docker/build-push-action@v2
         with:
-          context: ./sb-server-runner
-          file: ./sb-server-runner/Dockerfile
+          context: ./build/sb-server-runner
+          file: ./build/sb-server-runner/Dockerfile
           push: true
           tags: ${{ steps.prep-server-runner.outputs.tags }}
