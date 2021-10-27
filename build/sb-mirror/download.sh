@@ -3,7 +3,7 @@ URL=${MIRROR_URL:-"sponsor.ajay.app"} # download from main mirror if none specif
 mkdir /mirror
 
 echo "Downloading from $URL"
-if [ ! -z $URL ]
+if [ -z $URL ]
 then
   rsync -rztvP --zc=lz4 --append rsync://$URL/sponsorblock /mirror
 else

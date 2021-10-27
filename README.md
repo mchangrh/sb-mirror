@@ -25,7 +25,7 @@ DBINIT: only initialize the database and exit
 1. Postgres
     1. Download the mirror to a known directory
     2. Set `postgresExportPath` to the mirror directory
-    3. Copy `postgres-config.json` to the config directory
+    3. Copy `config/postgres-config.json` to the config directory
 2. SQLite
     1. Set `SQLITE=TRUE` on sb-mirror
     2. Set the export directories for `SponsorBlockDB.db`
