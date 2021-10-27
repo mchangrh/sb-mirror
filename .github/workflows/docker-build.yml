@@ -85,7 +85,7 @@ jobs:
           file: ./build/sb-mirror/Dockerfile
           push: true
           tags: ${{ steps.prep-mirror.outputs.tags }}
-      - name: Build sb-server-runner
+      - name: Build rsync
         uses: docker/build-push-action@v2
         with:
           context: ./build/rsync
