@@ -2,6 +2,6 @@ FROM debian:bullseye-slim
 MAINTAINER "Michael Chang <michael@mchang.name>"
 EXPOSE 873/tcp
 
-RUN apt update && apt install -y rsync
+RUN apt update && apt install --no-install-recommends -y rsync
 
-ENTRYPOINT ["rsync" "--daemon"]
+CMD rsync --daemon
