@@ -13,6 +13,7 @@ More details about the project can be found at https://sponsor.ajay.app
 - curl is licenced under [MIT](https://spdx.org/licenses/MIT) and can be found at https://curl.se
 - jq is licenced under [MIT](https://spdx.org/licenses/MIT) and can be found at https://stedolan.github.io/jq
 - ca-certificates are licened under [MPL2.0](https://spdx.org/licenses/MPL-2.0) AND [MIT](https://spdx.org/licenses/MIT) and can be found at https://wiki.mozilla.org/CA
+- debian-cron is licenced under Paul-Vixie's-license and can be found at https://manpages.debian.org/bullseye/cron/cron.8.en.html with further changes and licence documented there
 
 # sb-server-runner
 - SponsorBlockServer is licenced under [MIT](https://spdx.org/licenses/MIT) and can be found at https://github.com/ajayyy/SponsorBlockServer

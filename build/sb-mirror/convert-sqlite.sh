@@ -1,6 +1,6 @@
 #!/bin/sh
 rm -f -- /export/SponsorTimes.db
-curl -L https://sponsor.ajay.app/download/sponsorTimes.db -o /export/SponsorTimesDB.db
+curl -s -L https://sponsor.ajay.app/download/sponsorTimes.db -o /export/SponsorTimesDB.db
 
 for file in /export/*.csv
 do

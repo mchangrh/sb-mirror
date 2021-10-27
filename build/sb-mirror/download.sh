@@ -1,14 +1,13 @@
 #!/bin/sh
 URL=${MIRROR_URL:-"sponsor.ajay.app"} # download from main mirror if none specified
-mkdir /mirror
 
 echo "Downloading from $URL"
-if [ -z $URL ]
+if [ ! -z $MIRROR_URL ]
 then
   rsync -rztvP --zc=lz4 --append rsync://$URL/sponsorblock /mirror
 else
   # download from main server so get filenames
-  curl -L $URL/database.json?generate=false -o response.json
+  curl -s -L $URL/database.json?generate=false -o response.json
   DUMP_DATE=$(cat response.json | jq .lastUpdated)
   set -- $(cat response.json | jq -r .links[].table)
 
@@ -20,7 +19,7 @@ else
   done
 fi
 
-if [ -z $SQLITE ] # if sqlite, merge all csvs into one .db file
+if [ ! -z $SQLITE ] # if sqlite, merge all csvs into one .db file
 then
   sh /convert-sqlite.sh
 fi
