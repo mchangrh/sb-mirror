@@ -2,7 +2,7 @@ FROM debian:bullseye-slim
 MAINTAINER "Michael Chang <michael@mchang.name>"
 EXPOSE 873/tcp
 
-RUN apt update && apt install -y rsync sqlite3 wget
+RUN apt update && apt install -y --no-install-recommends rsync sqlite3 curl ca-certificates jq
 COPY . /
 
 ENTRYPOINT ["/docker-entrypoint.sh"]

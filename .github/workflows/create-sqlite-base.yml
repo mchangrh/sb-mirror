@@ -14,9 +14,9 @@ jobs:
       # Initialization
       - uses: actions/checkout@v2
       - name: Start docker container
-        run: docker run -e DBINIT=true -v "${PWD}/export:/export" mchangrh/sb-server-runner
+        run: docker run -e DBINIT=true -v "${PWD}/export:/opt/exports" mchangrh/sb-server-runner
       # Create base db artifact
       - uses: actions/upload-artifact@v2
         with:
           name: SponsorTimesDB.db
-          path: export/sponsorTimesDB.db
+          path: ./export/sponsorTimesDB.db

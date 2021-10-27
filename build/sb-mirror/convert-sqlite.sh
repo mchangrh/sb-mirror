@@ -1,6 +1,6 @@
 #!/bin/sh
 rm -f -- /export/SponsorTimes.db
-wget http://sb-archive.mchang.xyz/sb-mirror/sponsorTimes.db -O /export/SponsorTimesDB.db
+curl -L https://sponsor.ajay.app/download/sponsorTimes.db -o /export/SponsorTimesDB.db
 
 for file in /export/*.csv
 do

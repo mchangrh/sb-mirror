@@ -4,4 +4,4 @@ EXPOSE 873/tcp
 
 RUN apk add --no-cache rsync
 
-ENTRYPOINT ["rsync" "--daemon"]
+CMD rsync --no-detach --daemon

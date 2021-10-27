@@ -2,7 +2,7 @@ FROM alpine:latest
 MAINTAINER "Michael Chang <michael@mchang.name>"
 EXPOSE 873/tcp
 
-RUN apk add --no-cache rsync sqlite wget
+RUN apk add --no-cache rsync sqlite curl jq
 COPY . /
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
