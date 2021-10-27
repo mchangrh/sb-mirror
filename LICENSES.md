@@ -18,7 +18,7 @@ More details about the project can be found at https://sponsor.ajay.app
 - SponsorBlockServer is licenced under [MIT](https://spdx.org/licenses/MIT) and can be found at https://github.com/ajayyy/SponsorBlockServer
 - git is licenced under [GPL-2.0-or-later](https://spdx.org/licenses/GPL-2.0-or-later) and can be found at https://git-scm.com
 - nodejs is licenced under [MIT](https://spdx.org/licenses/MIT) and can be found at https://nodejs.org
-- npm is licenced under [Artistic-2.0] and can be found at https://www.npmjs.com/
+- npm is licenced under [Artistic-2.0](https://spdx.org/licenses/Artistic-2.0) and can be found at https://www.npmjs.com/
 - build dependencies
   - python3 is licenced under [PSF-2.0](https://spdx.org/licenses/PSF-2.0.html) and can be found at https://www.python.org
   - make is licened under [GPL-3.0-or-later](https://spdx.org/licenses/GPL-3.0-or-later) and can be found at https://www.gnu.org/software/make

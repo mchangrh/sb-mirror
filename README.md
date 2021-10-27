@@ -37,6 +37,6 @@ If you would like to set up a full API mirror, see [containers](./docs/container
 
 Contributions & Pull request are always welcome & appreciated
 
-non-exhaustive list of packages & respective licences here [LICENCES.md](./LICENCES.md)
+non-exhaustive list of packages & respective licences [here](./LICENSES.md)
 
 There is an active rsync mirror that only downloads once every 24 hours and can be found [here](https://github.com/mchangrh/sb-archive)
