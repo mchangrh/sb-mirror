@@ -1,5 +1,4 @@
 name: create-sqlite-base
-
 on: workflow_dispatch
 
 jobs:

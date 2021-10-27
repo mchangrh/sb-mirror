@@ -1,5 +1,4 @@
-name: docker-ci
-
+name: sb-mirror-docker
 on:
   push:
     branches:

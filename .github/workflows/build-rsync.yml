@@ -1,4 +1,4 @@
-name: docker-ci
+name: rsync-docker
 
 on:
   push:

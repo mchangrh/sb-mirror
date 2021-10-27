@@ -1,4 +1,4 @@
-name: docker-ci
+name: server-runner-docker
 
 on:
   push:
