@@ -1,4 +1,8 @@
 #!/bin/sh
+# download licence
+curl https://raw.githubusercontent.com/wiki/ajayyy/SponsorBlock/Database-and-API-License.md -o /mirror/licence.md
+echo "Uses SponsorBlock data from https://sponsor.ajay.app/"
+
 sh /download.sh # download latest
 
 if [ -z "$MIRROR" ] # if mirror is enabled, start mirroring

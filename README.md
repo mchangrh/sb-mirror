@@ -1,39 +1,42 @@
 # SponsorBlock Mirror
+Docker containers to mirror the [SponsorBlock](https://sponsor.ajay.app) database + API
 
-Docker container to mirror the SponsorBlock database over rsync
-## Just download locally
-`docker run --rm -it -v "${PWD}/sb-mirror:/mirror" mchangrh/sb-mirror:latest`
+---
+## SponsorBlock Database Licence
+SponsorBlock data and databases are under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) from https://sponsor.ajay.app.
 
-# sb-mirror
-Create an rsync mirror of the SponsorBlock database
+---
 
-## Environment Variables
-SQLITE: set to auto-generate sqlite .db file to /export  
-MIRROR_URL: override to set upstream mirror, must be rsync  
-MIRROR: set to start rsyncd and cron to run every 5 minutes
+## Usage
+This copies the latest SponsorBlock database to the `./sb-mirror` local directory
 
-# sb-server-runner
-Download and run the SponsorBlockServer from the master branch
+```sh
+docker run --rm -it -v "${PWD}/sb-mirror:/mirror" mchangrh/sb-mirror:latest
+```
+docker-compose
+```yml
+sb-mirror:
+  image: mchangrh/sb-mirror
+  container_name: sb-mirror
+  volumes:
+    - ./sb-mirror:/mirror
+  ports:
+  #  - 873:873
+  restart: unless stopped
+  environment:
+  #  - MIRROR=TRUE
+```
+---
+## Mirroring
 
-## Environment Variables
-DBINIT: only initialize the database and exit
+If you would like to set up an active mirror, allow `873/tcp` through your firewalls for rsyncd and uncomment lines in docker-compose
 
-# rsync
-container with rsyncd
+If you would like to set up a full API mirror, see [containers](./docs/containers.md)
 
-# docker-compose
-1. Postgres
-    1. Download the mirror to a known directory
-    2. Set `postgresExportPath` to the mirror directory
-    3. Copy `config/postgres-config.json` to the config directory
-2. SQLite
-    1. Set `SQLITE=TRUE` on sb-mirror
-    2. Set the export directories for `SponsorBlockDB.db`
+---
 
-The default admin ID is a hash of `WjGS5C9WRhVzjmB8KdrdR8jLqvTwC5q5kAGdC5WVzfDcbAPX`
+Contributions & Pull request are always welcome & appreciated
 
-## Databases
-| Database 	| Postgres 	| SQLite 	| MSSQL 	|
-|---	|---	|---	|---	|
-| Advantages 	| Performs Well 	| Performs Poorly 	| - 	|
-| Disadvantages 	| RAM intensive COPY on start 	| Starts Immediately 	| Not Supported 	|
+non-exhaustive list of packages & respective licences here [LICENCES.md](./LICENCES.md)
+
+There is an active rsync mirror that only downloads once every 24 hours and can be found [here](https://github.com/mchangrh/sb-archive)
