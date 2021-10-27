@@ -1,6 +1,8 @@
 # SponsorBlock Mirror
 Docker containers to mirror the [SponsorBlock](https://sponsor.ajay.app) database + API
 
+This work is dual-licenced under GPL-3.0-only AND MIT
+
 ---
 ## SponsorBlock Database Licence
 SponsorBlock data and databases are under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) from https://sponsor.ajay.app.
