@@ -11,7 +11,7 @@ services:
     image: postgres:alpine
   sb-mirror:
     image: mchangrh/sb-mirror:latest
-    build: ./sb-mirror
+    build: ./build/sb-mirror
     # map port externally
     ports:
       - "873:873"
@@ -19,14 +19,15 @@ services:
       # - MIRROR=TRUE # enable cronjob
       # - MIRROR_URL=qc.mchang.xyz # override to set upstream mirror, defaults to sponsor.ajay.app
       # - SQLITE=FALSE # generate .db in /export
+      - PADDING_VAR=false # here to make compose not complain
     volumes:
       - "${PWD}/mirror:/mirror"
       - "${PWD}/export:/export"
   sb-server:
-    ports: "8080:8080"
-    environment:
-      volumes:
-        - "${PWD}/export/SponsorTimesDB.db:/app/database/SponsorTimesDB.db"
-        - "${PWD}/config.json:/app/config.json"
+    ports: 
+     - "8080:8080"
+    volumes:
+      - "${PWD}/export/SponsorTimesDB.db:/app/database/SponsorTimesDB.db"
+      - "${PWD}/config.json:/app/config.json"
     image: mchangrh/sb-server-runner:latest
-    build: ./sb-server-runner
+    build: ./build/sb-server-runner
