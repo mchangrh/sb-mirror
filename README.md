@@ -7,9 +7,6 @@ Docker container to mirror the SponsorBlock database over rsync
 # sb-mirror
 Create an rsync mirror of the SponsorBlock database
 
-## misc
-The admin ID is a hash of `WjGS5C9WRhVzjmB8KdrdR8jLqvTwC5q5kAGdC5WVzfDcbAPX`
-
 ## Environment Variables
 SQLITE: set to auto-generate sqlite .db file to /export  
 MIRROR_URL: override to set upstream mirror, must be rsync  
@@ -21,6 +18,9 @@ Download and run the SponsorBlockServer from the master branch
 ## Environment Variables
 DBINIT: only initialize the database and exit
 
+# rsync
+container with rsyncd
+
 # docker-compose
 1. Postgres
     1. Download the mirror to a known directory
@@ -30,7 +30,9 @@ DBINIT: only initialize the database and exit
     1. Set `SQLITE=TRUE` on sb-mirror
     2. Set the export directories for `SponsorBlockDB.db`
 
-# Databases
+The default admin ID is a hash of `WjGS5C9WRhVzjmB8KdrdR8jLqvTwC5q5kAGdC5WVzfDcbAPX`
+
+## Databases
 | Database 	| Postgres 	| SQLite 	| MSSQL 	|
 |---	|---	|---	|---	|
 | Advantages 	| Performs Well 	| Performs Poorly 	| - 	|
