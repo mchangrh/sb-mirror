@@ -1,7 +1,9 @@
 #!/bin/sh
 echo "Licenced under the MIT Licence https://github.com/ajayyy/SponsorBlockServer" 
 
-git clone https://github.com/ajayyy/SponsorBlockServer.git --depth 1 /app
+git clone https://github.com/ajayyy/SponsorBlockServer.git --depth 1
+mv ./SponsorBlockServer/* ./SponsorBlockServer/.* /app/
+rm -rf ./SponsorBlockServer
 npm ci
 
 if [ ! -z $DBINIT ]
