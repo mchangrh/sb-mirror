@@ -38,6 +38,6 @@ jobs:
       - name: Build sb-mirror-alpine
         uses: docker/build-push-action@v2
         with:
-          context: ./build/sb-mirror
+          context: ./build/sb-mirror.alpine
           push: true
           tags: ${{ steps.meta.outputs.tags }}
