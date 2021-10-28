@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - build/rsync.alpine/**
+    workflow_dispatch
 
 jobs:
   build-rsync-alpine:

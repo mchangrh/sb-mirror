@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - build/rsync/**
+    workflow_dispatch
 
 jobs:
   build-rsync-debian:

@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - build/sb-server-runner/**
+  workflow_dispatch
 
 jobs:
   build-server-runner:
