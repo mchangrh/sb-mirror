@@ -6,8 +6,6 @@ https://github.com/ajayyy/SponsorBlockServer/issues/373
 ## tl;dr
 May 26, 2021 -> Oct 23, 2021 - 171MB | 0:14 | 4.11x speedup over a 100MB connection
 
-
-
 ## Design
 https://gist.github.com/mchangrh/3d4a967732f8994cfcfdc05a8e22dc4f
 - rsyncd that serves the database dump folder publicly.
@@ -44,4 +42,3 @@ https://gist.github.com/mchangrh/d8e2837b372756c867429eb20e946798
 ### CRDT (Conflict-free Replicated Data Type)
 - needs re-tooling of entire database
 - difficult to dedupe-chunk
-

@@ -7,7 +7,6 @@ sh /download.sh # download latest
 if [ ! -z $MIRROR ] # if mirror is enabled, start mirroring
 then
   echo "*/5 * * * * sh /download.sh" >> /etc/crontabs/root # set up crontab for updates every 5 minutes
-  # path for alpine is /etc/crontabs/root
   echo "Starting rsync daemon"
   rsync --daemon
   crond -f

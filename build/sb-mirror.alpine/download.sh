@@ -2,6 +2,7 @@
 URL=${MIRROR_URL:-"sponsor.ajay.app"} # download from main mirror if none specified
 MIRROR_DIR=${MIRROR_DIR:-"/mirror"}
 curl -s https://raw.githubusercontent.com/wiki/ajayyy/SponsorBlock/Database-and-API-License.md -o ${MIRROR_DIR}/licence.md
+mkdir ${MIRROR_DIR}/
 
 echo "Downloading from $URL"
 if [ ! -z $MIRROR_URL ]
