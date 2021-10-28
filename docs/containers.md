@@ -27,11 +27,12 @@ Just a container with rsyncd
 Postgres Setup
 1. Download the mirror to a known directory
 2. Set `postgresExportPath` to the mirror directory
-3. Copy `config/postgres-config.json` to the config directory
 
 SQLite Setup
 1. Set `SQLITE=TRUE` on sb-mirror
 2. Set the export directories for `SponsorBlockDB.db`
+
+Uncomment the respective config file mapping
 
 Database Comparison
 | Database 	| Postgres 	| SQLite 	| MSSQL 	|

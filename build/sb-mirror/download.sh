@@ -17,6 +17,8 @@ else
   # --zc=lz4 disable lz4 for now, pending aports merge
     rsync -ztvP --zc=lz4 --append rsync://$URL/sponsorblock/${table}_${DUMP_DATE}.csv /mirror/${table}.csv
   done
+  unix_time=$(echo $DUMP_DATE | cut -c 1-10)
+  echo $(date -d@$unix_time +%F_%H-%M) > /mirror/lastUpdate.txt
 fi
 
 if [ ! -z $SQLITE ] # if sqlite, merge all csvs into one .db file
