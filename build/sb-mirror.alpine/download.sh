@@ -7,8 +7,7 @@ mkdir -p ${MIRROR_DIR}/ ${EXPORT_DIR}/
 download() {
   curl -sL https://git.io/sb-dbapi-license -o ${MIRROR_DIR}/licence.md
   echo "Downloading from $URL"
-  EXTRAPARAM=$1
-  if [ -n "$MIRROR_URL" ]; then rsync -rztvP --zc=lz4 "$1" --append rsync://$URL/sponsorblock ${MIRROR_DIR}
+  if [ -n "$MIRROR_URL" ]; then rsync -rztvP --zc=lz4 --append rsync://$URL/sponsorblock ${MIRROR_DIR}
   else
     # download from main server so get filenames
     curl -sL $URL/database.json?generate=false -o response.json
@@ -18,26 +17,16 @@ download() {
     rm response.json
 
     for table in "$@"
-    do rsync -ztvP --zc=lz4 "$1" --append rsync://$URL/sponsorblock/${table}_${DUMP_DATE}.csv ${MIRROR_DIR}/${table}.csv; done
+    do rsync -ztvP --zc=lz4 --append rsync://$URL/sponsorblock/${table}_${DUMP_DATE}.csv ${MIRROR_DIR}/${table}.csv; done
     date -d@$(echo $DUMP_DATE | cut -c 1-10) +%F_%H-%M > ${MIRROR_DIR}/lastUpdate.txt
   fi
 }
 
 validate() {
   echo "Validating Downloads"
-  FAIL=0
   for file in ${MIRROR_DIR}/*.csv
-    if ! csvlint "$file"; then
-      rm "$file"
-      FAIL=1
-    fi
-  done
-  echo $FAIL
-  if [ $FAIL -eq 1 ]; then
-    FAIL=0
-    echo "Downloading failed files"
-    download --ignore-existing
-  fi
+  do csvlint $file && echo $file is valid || rm $file; done
+  download
 }
 
 convert_sqlite() {
