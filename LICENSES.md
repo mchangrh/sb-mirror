@@ -25,7 +25,6 @@ More details about the project can be found at https://sponsor.ajay.app
   - python3 is licenced under [PSF-2.0](https://spdx.org/licenses/PSF-2.0.html) and can be found at https://www.python.org
   - make is licened under [GPL-3.0-or-later](https://spdx.org/licenses/GPL-3.0-or-later) and can be found at https://www.gnu.org/software/make
   - g++ is licenced under [GPL-2.0-or-later](https://spdx.org/licenses/GPL-2.0-or-later) [LGPL-2.1-or-later](https://spdx.org/licenses/LGPL-2.1-or-later) and can be found at https://gcc.gnu.org
-  - wget is licenced under [GPL-3.0-or-later](https://spdx.org/licenses/GPL-3.0-or-later) WITH OpenSSL-Exception and can be found at https://www.gnu.org/software/wget/wget.html
 
 ---
 
