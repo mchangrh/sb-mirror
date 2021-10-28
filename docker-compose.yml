@@ -27,7 +27,7 @@ services:
     ports: 
      - "8080:8080"
     volumes:
-      - ./export/SponsorTimesDB.db:/app/database/SponsorTimesDB.db
+      - ./export/:/app/database/
       # - ./sqlite-config.json:/app/config.json
       # - ./postgres-config.json:/app/config.json
     image: mchangrh/sb-server-runner:latest
