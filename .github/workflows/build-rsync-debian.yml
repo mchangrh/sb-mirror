@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Docker meta
-	      id: meta
+        id: meta
         uses: docker/metadata-action@v3
         with:
           images: |
@@ -21,7 +21,7 @@ jobs:
             ghcr.io/mchangrh/rsync
           tags: |
             type=sha,
-			      type-raw,value=debian
+            type-raw,value=debian
           flavor: |
             latest=true
       - name: Login to DockerHub
