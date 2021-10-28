@@ -21,7 +21,7 @@ jobs:
             mchangrh/sb-mirror
             ghcr.io/mchangrh/sb-mirror
           tags: |
-            type-raw,value=debian
+            type-raw,value=alpine
           flavor: |
             latest=false
       - name: Login to DockerHub

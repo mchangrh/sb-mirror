@@ -1,10 +1,13 @@
 #!/bin/sh
-mkdir /export/
-rm -f -- /export/SponsorTimes.db
-curl -s -L https://sponsor.ajay.app/download/sponsorTimes.db -o /export/SponsorTimesDB.db
+MIRROR_DIR=${MIRROR_DIR:-"/mirror"}
+EXPORT_DIR=${EXPORT_DIR:-"/export"}
 
-for file in /mirror/*.csv
+mkdir ${EXPORT_DIR}/
+rm -f -- ${EXPORT_DIR}/SponsorTimes.db
+curl -s -L https://sponsor.ajay.app/download/sponsorTimes.db -o ${EXPORT_DIR}/SponsorTimesDB.db
+
+for file in ${MIRROR_DIR}/*.csv
 do
   filename=`basename $file .csv`
-  sqlite3 -separator ',' /export/SponsorTimesDB.db ".import --skip 1 $file ${filename}" 
+  sqlite3 -separator ',' ${EXPORT_DIR}/SponsorTimesDB.db ".import --skip 1 $file ${filename}" 
 done
