@@ -5,7 +5,7 @@ on:
       - main
     paths:
       - build/sb-mirror/**
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   build-sb-mirror-debian:
