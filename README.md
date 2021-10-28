@@ -18,15 +18,18 @@ docker run --rm -it -v "${PWD}/sb-mirror:/mirror" mchangrh/sb-mirror:latest
 docker-compose
 ```yml
 sb-mirror:
-  image: mchangrh/sb-mirror
-  container_name: sb-mirror
-  volumes:
-    - ./sb-mirror:/mirror
+  image: mchangrh/sb-mirror:latest
+  build: ./build/sb-mirror
+  # map port externally
   ports:
-  #  - 873:873
-  restart: unless stopped
+    - "873:873"
   environment:
-  #  - MIRROR=TRUE
+    # - MIRROR=TRUE # enable cronjob
+    # - MIRROR_URL=qc.mchang.xyz # override to set upstream mirror, defaults to sponsor.ajay.app
+    # - SQLITE=FALSE # generate .db in /export
+  volumes:
+    - ./mirror:/mirror
+    - ./export:/export
 ```
 ---
 ## Mirroring
