@@ -9,11 +9,18 @@ SponsorBlock data and databases are under [CC BY-NC-SA 4.0](https://creativecomm
 
 ---
 
+[![sb-mirror](https://img.shields.io/docker/image-size/mchangrh/sb-mirror/alpine?label=sb-mirror)](https://hub.docker.com/r/mchangrh/sb-mirror)
+[![sb-server-runner](https://img.shields.io/docker/image-size/mchangrh/sb-server-runner/latest?label=sb-server-runner)](https://hub.docker.com/r/mchangrh/sb-server-runner)
+[![rsync](https://img.shields.io/docker/image-size/mchangrh/rsync/alpine?label=rsync)](https://hub.docker.com/r/mchangrh/rsync)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+
 ## Usage
 This copies the latest SponsorBlock database to the `./sb-mirror` local directory
 
 ```sh
-docker run --rm -it -v "${PWD}/sb-mirror:/mirror" mchangrh/sb-mirror:latest
+docker run --rm -it -v "${PWD}/sb-mirror:/mirror" mchangrh/sb-mirror:alpine
 ```
 docker-compose
 ```yml
