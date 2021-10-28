@@ -1,14 +1,14 @@
-name: rsync-debian
+name: sb-mirror-alpine
 on:
   push:
     branches:
       - main
     paths:
-      - build/rsync/**
+      - build/sb-mirror.alpine/**
   workflow_dispatch:
 
 jobs:
-  build-rsync-debian:
+  build-sb-mirror-alpine:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,12 +18,12 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            mchangrh/rsync
-            ghcr.io/mchangrh/rsync
+            mchangrh/sb-mirror
+            ghcr.io/mchangrh/sb-mirror
           tags: |
             type-raw,value=debian
           flavor: |
-            latest=true
+            latest=false
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
@@ -35,9 +35,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build rsync-debian
+      - name: Build sb-mirror-alpine
         uses: docker/build-push-action@v2
         with:
-          context: ./build/rsync
+          context: ./build/sb-mirror
           push: true
           tags: ${{ steps.meta.outputs.tags }}

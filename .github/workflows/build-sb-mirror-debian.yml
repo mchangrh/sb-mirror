@@ -1,4 +1,4 @@
-name: sb-mirror
+name: sb-mirror-debian
 on:
   push:
     branches:
@@ -21,7 +21,6 @@ jobs:
             mchangrh/sb-mirror
             ghcr.io/mchangrh/sb-mirror
           tags: |
-            type=sha,
             type-raw,value=debian
           flavor: |
             latest=true

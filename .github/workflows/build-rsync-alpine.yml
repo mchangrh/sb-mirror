@@ -21,7 +21,6 @@ jobs:
             mchangrh/rsync
             ghcr.io/mchangrh/rsync
           tags: |
-            type=sha,
             type-raw,value=alpine
           flavor: |
             latest=false

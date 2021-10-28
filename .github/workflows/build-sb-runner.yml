@@ -20,8 +20,6 @@ jobs:
           images: |
             mchangrh/sb-server-runner
             ghcr.io/mchangrh/sb-server-runner
-          tags: |
-            type=sha
           flavor: |
             latest=true
       - name: Login to DockerHub
