@@ -1,28 +1,29 @@
-name: sb-runner
+name: rsync-alpine
 on:
   push:
     branches:
       - main
     paths:
-      - build/sb-server-runner/**
+      - build/rsync.alpine/**
 
 jobs:
-  build-server-runner:
-	  runs-on: ubuntu-latest 
+  build-rsync-alpine:
+	  runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Docker meta
-        id: meta
+	      id: meta
         uses: docker/metadata-action@v3
         with:
           images: |
-            mchangrh/sb-server-runner
-            ghcr.io/mchangrh/sb-server-runner
+            mchangrh/rsync
+            ghcr.io/mchangrh/rsync
           tags: |
-            type=sha
+            type=sha,
+			      type-raw,value=alpine
           flavor: |
-            latest=true
+            latest=false
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
@@ -34,9 +35,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build sb-server-runner
+      - name: Build rsync-alpine
         uses: docker/build-push-action@v2
         with:
-          context: ./build/sb-server-runner
+          context: ./build/rsync.alpine
           push: true
           tags: ${{ steps.meta.outputs.tags }}

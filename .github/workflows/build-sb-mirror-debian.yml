@@ -1,26 +1,27 @@
-name: sb-runner
+name: sb-mirror
 on:
   push:
     branches:
       - main
     paths:
-      - build/sb-server-runner/**
+      - build/sb-mirror/**
 
 jobs:
-  build-server-runner:
-	  runs-on: ubuntu-latest 
+  build-sb-mirror-debian:
+	  runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Docker meta
-        id: meta
+	      id: meta
         uses: docker/metadata-action@v3
         with:
           images: |
-            mchangrh/sb-server-runner
-            ghcr.io/mchangrh/sb-server-runner
+            mchangrh/sb-mirror
+            ghcr.io/mchangrh/sb-mirror
           tags: |
-            type=sha
+            type=sha,
+			      type-raw,value=debian
           flavor: |
             latest=true
       - name: Login to DockerHub
@@ -34,9 +35,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build sb-server-runner
+      - name: Build sb-mirror-debian
         uses: docker/build-push-action@v2
         with:
-          context: ./build/sb-server-runner
+          context: ./build/sb-mirror
           push: true
           tags: ${{ steps.meta.outputs.tags }}

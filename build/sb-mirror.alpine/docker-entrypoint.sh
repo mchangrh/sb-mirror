@@ -11,5 +11,5 @@ then
   # path for alpine is /etc/crontabs/root
   echo "Starting rsync daemon"
   rsync --daemon
-  cron -f
+  crond -f
 fi
