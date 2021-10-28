@@ -8,6 +8,7 @@ Environment Variables
 SQLITE=TRUE # set to auto-generate sqlite .db file to /export  
 MIRROR_URL=qc.mchang.xyz # override to set upstream mirror, must be rsync  
 MIRROR=TRUE # set to start rsyncd and cron to run every 5 minutes
+NO_VALIDATE=TRUE # set to skip validation of csv files
 ```
 
 Tags:  
