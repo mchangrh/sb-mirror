@@ -9,7 +9,7 @@ FROM node:lts-alpine3.14
 MAINTAINER "Michael Chang <michael@mchang.name>"
 EXPOSE 8080/tcp
 WORKDIR /app
-RUN apk add --no-cache curl
+RUN apk add --no-cache curl git
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 COPY --from=builder /build/node_modules /build/node_modules
 ENTRYPOINT /docker-entrypoint.sh
