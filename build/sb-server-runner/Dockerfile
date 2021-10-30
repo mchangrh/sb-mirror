@@ -9,8 +9,9 @@ FROM node:lts-alpine3.14
 MAINTAINER "Michael Chang <michael@mchang.name>"
 EXPOSE 8080/tcp
 WORKDIR /app
-RUN apk add --no-cache curl git
+RUN apk add --no-cache git
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
-COPY --from=builder /build/node_modules /build/node_modules
+RUN git clone --depth 1 -b master https://github.com/ajayyy/SponsorBlockServer.git /app
+COPY --from=builder /build/node_modules /app/node_modules
 ENTRYPOINT /docker-entrypoint.sh
 CMD ["sh"]
