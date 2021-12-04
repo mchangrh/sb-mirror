@@ -46,6 +46,12 @@ If you would like to set up a full API mirror, see [containers](./docs/container
 
 Contributions & Pull request are always welcome & appreciated
 
-non-exhaustive list of packages & respective licences [here](./LICENSES.md)
+non-exhaustive list of packages & respective licences [here](./oss-attribution/attribution.md)
 
-There is an active rsync mirror that only downloads once every 24 hours and can be found [here](https://github.com/mchangrh/sb-archive)
+There is an active rsync mirror that only downloads once every 24 hours and can be found [here](http://sb-archive.mchang.xyz/)
+
+---
+
+Special thanks to [Ajay](https://ajay.app/), [SponsorBlock](https://github.com/ajayyy/SponsorBlock/graphs/contributors), [SponsorBlockServer](https://github.com/ajayyy/SponsorBlockServer/graphs/contributors) and [SponsorBlockSite](https://github.com/ajayyy/SponsorBlockSite/graphs/contributors) contributors, SponsorBlock VIPs and the community for their contributions.
+
+Don't be shy! Join us on [Discord](https://discord.gg/SponsorBlock) or [Matrix](https://matrix.to/#/#sponsor:ajay.app?via=ajay.app&via=matrix.org&via=mozilla.org)

@@ -1,0 +1,49 @@
+sb-database:
+  SPDX: CC-BY-NC-SA-4.0
+  URL: https://sponsor.ajay.app
+rsync:
+  rsync:
+    SPDX: GPL-3.0-or-later
+    URL: https://rsync.samba.org
+sb-mirror:
+  busybox:
+    SPDX: GPL-2.0-Only
+    URL: https://busybox.net
+  ca-certificates:
+    SPDX: MPL-2.0 AND MIT
+    URL: https://wiki.mozilla.org/CA
+  curl:
+    SPDX: MIT
+    URL: https://curl.se
+  jq:
+    SPDX: MIT
+    URL: https://stedolan.github.io/jq
+  rsync: 
+    SPDX: GPL-3.0-or-later
+    URL: https://rsync.samba.org
+  sqlite:
+    SPDX: blessing
+    URL: https://sqlite.org
+sb-server-runner:
+  g++:
+    SPDX: GPL-2.0-or-later
+    URL: https://gcc.gnu.org
+  git:
+    SPDX: GPL-2.0-or-later
+    URL: https://git-scm.com
+  make:
+    SPDX: GPL-3.0-or-later
+    URL: https://gnu.org/software/make
+  nodejs:
+    SPDX: MIT
+    URL: https://nodejs.org
+  npm:
+    SPDX: Artistic-2.0
+    URL: https://npmjs.com
+  python3:
+    SPDX: PSF-2.0
+    URL: https://python.org
+  SponsorBlockServer:
+    SPDX: MIT
+    URL: https://github.com/ajayyy/SponsorBlockServer
+
