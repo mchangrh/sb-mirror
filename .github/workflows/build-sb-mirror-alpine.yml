@@ -1,10 +1,10 @@
-name: sb-mirror-alpine
+name: sb-mirror
 on:
   push:
     branches:
       - main
     paths:
-      - build/sb-mirror.alpine/**
+      - build/sb-mirror/**
   workflow_dispatch:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
           tags: |
             type-raw,value=alpine
           flavor: |
-            latest=false
+            latest=true
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
@@ -35,9 +35,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build sb-mirror-alpine
+      - name: Build sb-mirror
         uses: docker/build-push-action@v2
         with:
-          context: ./build/sb-mirror.alpine
+          context: ./build/sb-mirror
           push: true
           tags: ${{ steps.meta.outputs.tags }}

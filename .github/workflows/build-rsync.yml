@@ -1,4 +1,4 @@
-name: rsync-debian
+name: rsync
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-rsync-debian:
+  build-rsync:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,7 +21,7 @@ jobs:
             mchangrh/rsync
             ghcr.io/mchangrh/rsync
           tags: |
-            type-raw,value=debian
+            type-raw,value=alpine
           flavor: |
             latest=true
       - name: Login to DockerHub
@@ -35,7 +35,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build rsync-debian
+      - name: Build rsync
         uses: docker/build-push-action@v2
         with:
           context: ./build/rsync
