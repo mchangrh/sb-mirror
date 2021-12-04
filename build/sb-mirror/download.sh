@@ -8,7 +8,7 @@ mkdir -p "${MIRROR_DIR}"/ "${EXPORT_DIR}"/
 validate_file() {
   FILENAME=$1
   COLS=$(head -n1 "$FILENAME" | awk 'BEGIN{FS=","}END{print NF}')
-  awk -F, -v COLS="$COLS" 'NF==COLS {print > "tmp.csv"} NF<COLS {print >> "bad.csv"}' "$FILENAME"
+  awk -F, -v COLS="$COLS" '{OFS=FS} NF=COLS {print}' "$FILENAME"
   mv tmp.csv "$FILENAME"
 }
 
@@ -27,7 +27,8 @@ download() {
     for table in "$@"
     do
       echo "Downloading $table.csv"
-      rsync -ztvP --zc=lz4 --append --contimeout=10 rsync://sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv ${MIRROR_DIR}/${table}.csv ||
+      # temporarily override URL
+      rsync -ztvP --zc=lz4 --append --contimeout=10 rsync://wiki.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv ${MIRROR_DIR}/${table}.csv ||
         curl -L https://sponsor.ajay.app/database/"${table}".csv -o ${MIRROR_DIR}/"${table}".csv # fallback to CURL if rsync times out
     done
     date -d@"$(echo "$DUMP_DATE" | cut -c 1-10)" +%F_%H-%M > "${MIRROR_DIR}"/lastUpdate.txt
@@ -43,7 +44,8 @@ validate() {
 convert_sqlite() {
   echo "Starting SQLite Conversion"
   rm -f -- "${EXPORT_DIR}"/SponsorTimes.db
-  curl -sL https://sponsor.ajay.app/download/sponsorTimes.db -o "${EXPORT_DIR}"/SponsorTimesDB.db
+  curl -sL https://pub.mchang.icu/sponsorTimes.db -o "${EXPORT_DIR}"/SponsorTimesDB.db
+  # https://sponsor.ajay.app/download/sponsorTimes.db
 
   for file in "${MIRROR_DIR}"/*.csv; do
     filename=$(basename "$file" .csv)
