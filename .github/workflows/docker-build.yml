@@ -1,4 +1,4 @@
-name: multi-build-dcoker
+name: multi-build-docker
 on: 
   workflow_call:
     inputs:
