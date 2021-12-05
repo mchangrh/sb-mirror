@@ -1,5 +1,4 @@
 #!/bin/sh
-URL=${MIRROR_URL:-"sponsor.ajay.app"} # download from main mirror if none specified
 MIRROR_DIR=${MIRROR_DIR:-"/mirror"}
 EXPORT_DIR=${EXPORT_DIR:-"/export"}
 mkdir -p "${MIRROR_DIR}"/ "${EXPORT_DIR}"/
@@ -14,8 +13,7 @@ validate_file() {
 
 download() {
   curl -sL https://git.io/sb-dbapi-license -o "$MIRROR_DIR"/licence.md
-  echo "Downloading from $URL"
-  if [ -n "$MIRROR_URL" ]; then rsync -rztvP --zc=lz4 --append --contimeout=10 rsync://"$URL"/sponsorblock "${MIRROR_DIR}"
+  if [ -n "$MIRROR_URL" ]; then rsync -rztvP --zc=lz4 --append --contimeout=10 rsync://"$MIRROR_URL"/sponsorblock "${MIRROR_DIR}"
   else # downloading from main mirror
     # get filenames
     curl -sL https://sponsor.ajay.app/database.json?generate=false -o response.json
@@ -27,9 +25,8 @@ download() {
     for table in "$@"
     do
       echo "Downloading $table.csv"
-      # temporarily override URL
-      rsync -ztvP --zc=lz4 --append --contimeout=10 rsync://sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv ${MIRROR_DIR}/${table}.csv ||
-        curl -L https://sponsor.ajay.app/database/"${table}".csv -o ${MIRROR_DIR}/"${table}".csv # fallback to CURL if rsync times out
+      rsync -ztvP --zc=lz4 --append --contimeout=10 rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv ||
+        curl --compressed -L https://sponsor.ajay.app/database/"${table}".csv -o "${MIRROR_DIR}"/"${table}".csv # fallback to CURL if rsync times out
     done
     date -d@"$(echo "$DUMP_DATE" | cut -c 1-10)" +%F_%H-%M > "${MIRROR_DIR}"/lastUpdate.txt
   fi
@@ -45,14 +42,17 @@ convert_sqlite() {
   echo "Starting SQLite Conversion"
   rm -f -- "${EXPORT_DIR}"/SponsorTimes.db
   curl -sL https://pub.mchang.icu/sponsorTimes.db -o "${EXPORT_DIR}"/SponsorTimesDB.db
-  # https://sponsor.ajay.app/download/sponsorTimes.db
+    # https://sponsor.ajay.app/download/sponsorTimes.db
   
+  # only convert sponsorTimes for now
+  sqlite3 -separator ',' "${EXPORT_DIR}"/SponsorTimesDB.db ".import --skip 1 ${MIRROR_DIR}/sponsorTimes.csv sponsorTimes"
   # sqlite setup
-  for file in "${MIRROR_DIR}"/*.csv; do
-    filename=$(basename "$file" .csv)
-    echo "$filename"
-    sqlite3 -separator ',' "${EXPORT_DIR}"/SponsorTimesDB.db ".import --skip 1 $file ${filename}"
-  done
+  # for file in "${MIRROR_DIR}"/*.csv; do
+  #   filename=$(basename "$file" .csv)
+  #   echo "$filename"
+  #   sqlite3 -separator ',' "${EXPORT_DIR}"/SponsorTimesDB.db ".import --skip 1 $file ${filename}"
+  # done
+  sqlite3 "${EXPORT_DIR}"/SponsorTimesDB.db "VACUUM;"
 }
 
 download
