@@ -1,17 +1,17 @@
-name: sb-runner
+name: sb-mirror
 on:
   push:
     branches:
       - main
     paths:
-      - build/sb-server-runner/**
+      - build/sb-mirror/**
   workflow_dispatch:
 
 jobs:
   build-rsync:
     uses: mchangrh/sb-mirror/.github/workflows/docker-build.yml@main
     with:
-      name: "sb-server-runner"
+      name: "sb-mirror"
     secrets:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}

@@ -1,11 +1,11 @@
-FROM node:lts-alpine3.14 as builder
+FROM node:lts-alpine as builder
 WORKDIR /build
 RUN apk add --no-cache python3 make g++ curl \
   && curl -sLO https://raw.githubusercontent.com/ajayyy/SponsorBlockServer/master/package.json \
   && curl -sLO https://raw.githubusercontent.com/ajayyy/SponsorBlockServer/master/package-lock.json \
   && npm ci
 
-FROM node:lts-alpine3.14
+FROM node:lts-alpine
 MAINTAINER "Michael Chang <michael@mchang.name>"
 EXPOSE 8080/tcp
 WORKDIR /app
