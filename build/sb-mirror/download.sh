@@ -7,7 +7,7 @@ download() {
   curl -sL https://git.io/sb-dbapi-license -o "$MIRROR_DIR"/licence.md
   if [ -n "$MIRROR_URL" ]; then
     echo "Downloading from mirror: $MIRROR_URL"
-    rsync -rztvP --zc=lz4 --append --contimeout=10 rsync://"$MIRROR_URL"/sponsorblock "${MIRROR_DIR}"
+    rsync -rztvP --zc=lz4 --append --contimeout=10 --exclude='*.txt' rsync://"$MIRROR_URL"/sponsorblock "${MIRROR_DIR}"
   else
     echo "Downloading from main mirror"
     # get filenames
