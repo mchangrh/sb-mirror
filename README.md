@@ -1,10 +1,6 @@
 # SponsorBlock Mirror
 Docker containers to mirror the [SponsorBlock](https://sponsor.ajay.app) database + API
 
-This work is dual-licenced under GPL-3.0-only AND MIT
-
----
-## SponsorBlock Database Licence
 SponsorBlock data and databases are under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) from https://sponsor.ajay.app.
 
 ---
@@ -48,10 +44,21 @@ Contributions & Pull request are always welcome & appreciated
 
 non-exhaustive list of packages & respective licences [here](./oss-attribution/attribution.md)
 
-There is an active rsync mirror that only downloads once every 24 hours and can be found [here](http://sb-archive.mchang.xyz/)
+sb-archive.mchang.xyz
+- 24hr delay
+- historical archive
+- rsync + http(s)
+
+https://sb.ltn.fi/database
+- 5 minute delay
+- http(s)
+
+sb-mirror.mchang.xyz
+- 5 minute delay
+- rsync + http(s)
 
 ---
 
 Special thanks to [Ajay](https://ajay.app/), [SponsorBlock](https://github.com/ajayyy/SponsorBlock/graphs/contributors), [SponsorBlockServer](https://github.com/ajayyy/SponsorBlockServer/graphs/contributors) and [SponsorBlockSite](https://github.com/ajayyy/SponsorBlockSite/graphs/contributors) contributors, SponsorBlock VIPs and the community for their contributions.
 
-Don't be shy! Join us on [Discord](https://discord.gg/SponsorBlock) or [Matrix](https://matrix.to/#/#sponsor:ajay.app?via=ajay.app&via=matrix.org&via=mozilla.org)
+Don't be shy! Join us on [Discord](https://discord.gg/SponsorBlock) or [Matrix](https://matrix.to/#/#sponsor:ajay.app)
