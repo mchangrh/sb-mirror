@@ -24,12 +24,14 @@ sb-mirror:
   image: mchangrh/sb-mirror
   container_name: sb-mirror
   volumes:
-    - ./sb-mirror:/mirror
+    - ./mirror:/mirror
+    - ./export:/export
   ports:
-  #  - 873:873
-  restart: unless stopped
+    - 873:873
   environment:
-  #  - MIRROR=TRUE
+  # - MIRROR=TRUE # enable cronjob
+  # - MIRROR_URL=sb-mirror.mchang.xyz # override to set upstream mirror 
+  # - SQLITE=FALSE # generate .db in /export  
 ```
 ---
 ## Mirroring
