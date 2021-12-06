@@ -21,7 +21,7 @@ download() {
     do
       echo "Downloading $table.csv"
       rsync -ztvP --zc=lz4 --append --contimeout=10 rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv ||
-        curl --compressed -L https://sponsor.ajay.app/download/"${table}".csv?generate=false -o "${MIRROR_DIR}"/"${table}".csv
+        curl --compressed -L https://sponsor.ajay.app/database/"${table}".csv?generate=false -o "${MIRROR_DIR}"/"${table}".csv
       # fallback to curl
       if [ -z "$VALIDATE" ]; then # re-run rsync if validate
         rsync -cztvP --zc=lz4 --cc=xxh3 --append --contimeout=10 rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv
