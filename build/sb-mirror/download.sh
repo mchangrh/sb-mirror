@@ -4,10 +4,10 @@ EXPORT_DIR=${EXPORT_DIR:-"/export"}
 mkdir -p "${MIRROR_DIR}"/ "${EXPORT_DIR}"/
 
 download() {
-  curl -sL https://git.io/sb-dbapi-license -o "$MIRROR_DIR"/licence.md
+  curl -sL https://raw.githubusercontent.com/wiki/ajayyy/SponsorBlock/Database-and-API-License.md -o "$MIRROR_DIR"/licence.md
   if [ -n "$MIRROR_URL" ]; then
     echo "Downloading from mirror: $MIRROR_URL"
-    rsync -rztvP --zc=lz4 --append --contimeout=10 --exclude='*.txt' rsync://"$MIRROR_URL"/sponsorblock "${MIRROR_DIR}"
+    rsync -rztvP --zc=lz4 --contimeout=10 --exclude='*.txt' rsync://"$MIRROR_URL"/sponsorblock "${MIRROR_DIR}"
   else
     echo "Downloading from main mirror"
     # get filenames
@@ -20,11 +20,11 @@ download() {
     for table in "$@"
     do
       echo "Downloading $table.csv"
-      rsync -ztvP --zc=lz4 --append --contimeout=10 rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv ||
+      rsync -cztvP --zc=lz4 --contimeout=10 rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv ||
         curl --compressed -L https://sponsor.ajay.app/database/"${table}".csv?generate=false -o "${MIRROR_DIR}"/"${table}".csv
       # fallback to curl
       if [ -z "$VALIDATE" ]; then # re-run rsync if validate
-        rsync -cztvP --zc=lz4 --cc=xxh3 --append --contimeout=10 rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv
+        rsync -cztvP --zc=lz4 --contimeout=10 rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv
       fi
     done
     date -d@"$(echo "$DUMP_DATE" | cut -c 1-10)" +%F_%H-%M > "${MIRROR_DIR}"/lastUpdate.txt
@@ -46,8 +46,8 @@ csvlint() {
 convert_sqlite() {
   echo "Starting SQLite Conversion"
   rm -f -- "${EXPORT_DIR}"/SponsorTimes.db
-  curl -sL https://pub.mchang.icu/sponsorTimes.db -o "${EXPORT_DIR}"/SponsorTimesDB.db
-    # https://sponsor.ajay.app/download/sponsorTimes.db
+  curl -sL https://fs.mchang.icu/pub/sponsorTimes.db -o "${EXPORT_DIR}"/SponsorTimesDB.db
+  # https://sponsor.ajay.app/download/sponsorTimes.db
   
   # only convert sponsorTimes for now
   sqlite3 -separator ',' "${EXPORT_DIR}"/SponsorTimesDB.db ".import --skip 1 ${MIRROR_DIR}/sponsorTimes.csv sponsorTimes"
@@ -59,6 +59,9 @@ convert_sqlite() {
   # done
   sqlite3 "${EXPORT_DIR}"/SponsorTimesDB.db "VACUUM;"
 }
+
+# trap exits
+trap 'exit 2' 2
 
 download
 # if csvlint, lint csv files

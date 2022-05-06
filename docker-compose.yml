@@ -18,7 +18,7 @@ services:
     environment:
       # - MIRROR=TRUE # enable cronjob
       # - MIRROR_URL=qc.mchang.xyz # override to set upstream mirror
-      # - VALIDATE+TRUE # enable rsync checksum validation
+      # - VALIDATE=TRUE # enable rsync checksum validation
       # - CSVLINT=TRUE # lint csv files (will just stop sqlite3 from complaining)
       # - SQLITE=TRUE # generate .db in /export
         # SQLITE will not always generate usable files since postgres does not export files correctly.
