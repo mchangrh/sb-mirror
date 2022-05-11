@@ -3,11 +3,13 @@ MIRROR_DIR=${MIRROR_DIR:-"/mirror"}
 EXPORT_DIR=${EXPORT_DIR:-"/export"}
 mkdir -p "${MIRROR_DIR}"/ "${EXPORT_DIR}"/
 
+RSYNC_ARGS="-cztvP --no-W --inplace --zc=lz4 --contimeout=10"
+
 download() {
   curl -sL https://raw.githubusercontent.com/wiki/ajayyy/SponsorBlock/Database-and-API-License.md -o "$MIRROR_DIR"/licence.md
   if [ -n "$MIRROR_URL" ]; then
     echo "Downloading from mirror: $MIRROR_URL"
-    rsync -rztvP --zc=lz4 --contimeout=10 --exclude='*.txt' rsync://"$MIRROR_URL"/sponsorblock "${MIRROR_DIR}"
+    rsync ${RSYNC_ARGS} -r --exclude='*.txt' rsync://"$MIRROR_URL"/sponsorblock "${MIRROR_DIR}"
   else
     echo "Downloading from main mirror"
     # get filenames
@@ -20,11 +22,11 @@ download() {
     for table in "$@"
     do
       echo "Downloading $table.csv"
-      rsync -cztvP --zc=lz4 --contimeout=10 rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv ||
+      rsync ${RSYNC_ARGS} rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv ||
         curl --compressed -L https://sponsor.ajay.app/database/"${table}".csv?generate=false -o "${MIRROR_DIR}"/"${table}".csv
       # fallback to curl
       if [ -z "$VALIDATE" ]; then # re-run rsync if validate
-        rsync -cztvP --zc=lz4 --contimeout=10 rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv
+        rsync ${RSYNC_ARGS} rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv
       fi
     done
     date -d@"$(echo "$DUMP_DATE" | cut -c 1-10)" +%F_%H-%M > "${MIRROR_DIR}"/lastUpdate.txt
