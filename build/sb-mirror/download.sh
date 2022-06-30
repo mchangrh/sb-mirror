@@ -22,11 +22,11 @@ download() {
     for table in "$@"
     do
       echo "Downloading $table.csv"
-      rsync ${RSYNC_ARGS} rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv ||
+      rsync ${RSYNC_ARGS} rsync://rsync.sponsor.ajay.app:31111/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv ||
         curl --compressed -L https://sponsor.ajay.app/database/"${table}".csv?generate=false -o "${MIRROR_DIR}"/"${table}".csv
       # fallback to curl
       if [ -z "$VALIDATE" ]; then # re-run rsync if validate
-        rsync ${RSYNC_ARGS} rsync://rsync.sponsor.ajay.app/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv
+        rsync ${RSYNC_ARGS} rsync://rsync.sponsor.ajay.app:31111/sponsorblock/"${table}"_"${DUMP_DATE}".csv "${MIRROR_DIR}"/"${table}".csv
       fi
     done
     date -d@"$(echo "$DUMP_DATE" | cut -c 1-10)" +%F_%H-%M > "${MIRROR_DIR}"/lastUpdate.txt

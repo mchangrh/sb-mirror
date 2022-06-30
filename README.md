@@ -46,7 +46,7 @@ Contributions & Pull request are always welcome & appreciated
 
 non-exhaustive list of packages & respective licences [here](./oss-attribution/attribution.md)
 
-sb-archive.mchang.xyz
+archive.sb.mchang.xyz
 - 24hr delay
 - historical archive
 - rsync + http(s)
@@ -55,7 +55,7 @@ https://sb.ltn.fi/database
 - 5 minute delay
 - http(s)
 
-sb-mirror.mchang.xyz
+mirror.sb.mchang.xyz
 - 5 minute delay
 - rsync + http(s)
 
