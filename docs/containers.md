@@ -19,6 +19,7 @@ CSVLINT=TRUE # set to remove invalid csv entries
   - disable xattr
 
 ## sb-server-runner
+### Replaced with native directory
 Downloads and runs [SponsorBlockServer](https://github.com/ajayyy/SponsorBlockServer) from the master branch
 
 SponsorBlockServer is licenced under [MIT](https://github.com/ajayyy/SponsorBlockServer/blob/master/LICENSE)
@@ -29,11 +30,7 @@ DBINIT=TRUE # set to only initialize the database and immediately exit
 ```
 
 ## rsync
-Alpine Linux with [rsync patches](https://github.com/mchangrh/alpine)
-  - add lz4
-  - add xxh3
-  - disable ACL
-  - disable xattr
+Alpine Linux with rsync
 
 ## docker-compose.yml
 PostgreSQL Setup

@@ -33,5 +33,4 @@ services:
       - ./export/:/app/database/
       # - ./sqlite-config.json:/app/config.json
       # - ./postgres-config.json:/app/config.json
-    image: mchangrh/sb-server-runner:latest
-    build: ./build/sb-server-runner
+    image: ghcr.io/ajayyy/sb-server:latest
