@@ -59,6 +59,10 @@ mirror.sb.mchang.xyz
 - 5 minute delay
 - rsync + http(s)
 
+sponsorblock.kavin.rocks
+- 5 minute delay
+- rsync
+
 ---
 
 Special thanks to [Ajay](https://ajay.app/), [SponsorBlock](https://github.com/ajayyy/SponsorBlock/graphs/contributors), [SponsorBlockServer](https://github.com/ajayyy/SponsorBlockServer/graphs/contributors) and [SponsorBlockSite](https://github.com/ajayyy/SponsorBlockSite/graphs/contributors) contributors, SponsorBlock VIPs and the community for their contributions.
