@@ -6,6 +6,8 @@ on:
     paths:
       - build/sb-server-runner/**
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 */10 * *'
 
 jobs:
   build:

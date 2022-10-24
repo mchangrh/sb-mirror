@@ -48,8 +48,7 @@ csvlint() {
 convert_sqlite() {
   echo "Starting SQLite Conversion"
   rm -f -- "${EXPORT_DIR}"/SponsorTimes.db
-  curl -sL https://fs.mchang.icu/pub/sponsorTimes.db -o "${EXPORT_DIR}"/SponsorTimesDB.db
-  # https://sponsor.ajay.app/download/sponsorTimes.db
+  curl -sL https://b2.ajay.app/file/sponsorblock-gh-public/sponsorTimes.db -o "${EXPORT_DIR}"/SponsorTimesDB.db
   
   # only convert sponsorTimes for now
   sqlite3 -separator ',' "${EXPORT_DIR}"/SponsorTimesDB.db ".import --skip 1 ${MIRROR_DIR}/sponsorTimes.csv sponsorTimes"
