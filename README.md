@@ -51,10 +51,6 @@ archive.sb.mchang.xyz
 - historical archive
 - rsync + http(s)
 
-https://sb.ltn.fi/database
-- 5 minute delay
-- http(s)
-
 mirror.sb.mchang.xyz
 - 5 minute delay
 - rsync + http(s)
