@@ -17,7 +17,7 @@ services:
       - "873:873"
     environment:
       # - MIRROR=TRUE # enable cronjob
-      # - MIRROR_URL=qc.mchang.xyz # override to set upstream mirror
+      - MIRROR_URL=mirror.sb.mchang.xyz # override to set upstream mirror
       # - VALIDATE=TRUE # enable rsync checksum validation
       # - CSVLINT=TRUE # lint csv files (will just stop sqlite3 from complaining)
       # - SQLITE=TRUE # generate .db in /export
@@ -30,7 +30,7 @@ services:
     ports: 
      - "8080:8080"
     volumes:
-      - ./export/:/app/database/
-      # - ./sqlite-config.json:/app/config.json
-      # - ./postgres-config.json:/app/config.json
+      - ./export/:/usr/src/app/database/
+      # - ./sqlite-config.json:/usr/src/app/config.json
+      # - ./postgres-config.json:/usr/src/app/config.json
     image: ghcr.io/ajayyy/sb-server:latest

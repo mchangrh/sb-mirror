@@ -1,3 +1,5 @@
+mirror/
+export/
 **/*.csv
 **/*.db
 **/response.json

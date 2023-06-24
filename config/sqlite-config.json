@@ -3,6 +3,6 @@
   "globalSalt": "mirrorsalt",
   "adminUserID": "c132d179bfa6a48f4014c163e4f530ecb401f505cf2e5fd02f5b1bb55ac97f5c",
   "behindProxy": true,
-  "db": "/app/database/SponsorTimesDB.db",
+  "db": "/usr/src/app/database/SponsorTimesDB.db",
   "mode": "mirror"
 }

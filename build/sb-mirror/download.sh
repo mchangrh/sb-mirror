@@ -3,7 +3,7 @@ MIRROR_DIR=${MIRROR_DIR:-"/mirror"}
 EXPORT_DIR=${EXPORT_DIR:-"/export"}
 mkdir -p "${MIRROR_DIR}"/ "${EXPORT_DIR}"/
 
-RSYNC_ARGS="-cztvP --no-W --inplace --zc=lz4 --contimeout=10"
+RSYNC_ARGS="-ztvP --no-W --inplace --zc=lz4 --contimeout=10"
 
 download() {
   curl -sL https://raw.githubusercontent.com/wiki/ajayyy/SponsorBlock/Database-and-API-License.md -o "$MIRROR_DIR"/licence.md
