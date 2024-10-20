@@ -44,18 +44,7 @@ Contributions & Pull request are always welcome & appreciated
 
 non-exhaustive list of packages & respective licences [here](./oss-attribution/attribution.md)
 
-archive.sb.mchang.xyz
-- 24hr delay
-- historical archive
-- rsync + http(s)
-
-mirror.sb.mchang.xyz
-- 5 minute delay
-- rsync + http(s)
-
-sponsorblock.kavin.rocks
-- 5 minute delay
-- rsync
+There are no longer any public mirrors that offer rsync downloads
 
 ---
 
