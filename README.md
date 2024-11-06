@@ -44,7 +44,10 @@ Contributions & Pull request are always welcome & appreciated
 
 non-exhaustive list of packages & respective licences [here](./oss-attribution/attribution.md)
 
-There are no longer any public mirrors that offer rsync downloads
+<https://sb.ltn.fi/database>
+
+- 5 minute delay
+- http(s)
 
 ---
 
