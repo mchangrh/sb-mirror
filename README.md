@@ -1,3 +1,15 @@
+sb-mirror:
+  image: mchangrh/sb-mirror
+  container_name: sb-mirror
+  volumes:
+    - ./mirror:/mirror
+    - ./export:/export
+  ports:
+    - 873:873
+  environment:
+  # - MIRROR=TRUE # enable cronjob
+  # - MIRROR_URL=mirror.sb.mchang.xyz # override to set upstream mirror 
+  # - SQLITE=FALSE # generate .db in /export  
 # SponsorBlock Mirror
 Docker containers to mirror the [SponsorBlock](https://sponsor.ajay.app) database + API
 
